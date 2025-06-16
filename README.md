@@ -1,4 +1,4 @@
-# Movie Database MCP Server
+# Movie Database MCP Server (Simplified)
 
 A FastMCP server that provides access to a MongoDB movie database with natural language queries.
 
@@ -19,8 +19,8 @@ A FastMCP server that provides access to a MongoDB movie database with natural l
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/movie-mcp-server.git
-cd movie-mcp-server
+git clone https://github.com/patw/movie-mcp-simple.git
+cd movie-mcp-simple
 ```
 
 2. Install dependencies:
@@ -28,16 +28,27 @@ cd movie-mcp-server
 pip install pymongo fastmcp
 ```
 
-3. Import the sample data (if needed):
-```bash
-mongorestore --uri mongodb://localhost:27017 --archive=sample_mflix.gz --gzip
-```
-
 ## Usage
 
-Run the server:
-```bash
-python movie-mcp.py mongodb://your_mongodb_uri
+Configure the MCP server in Claude desktop with the following config:
+
+```
+{
+"mcpServers": {
+"Movie Database": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "fastmcp, pymongo",
+        "fastmcp",
+        "run",
+        "<path to>/movie-mcp-simple/movie-mcp.py",
+        "<MongoDB Atlas connection string>"
+      ]
+    }
+  }
+}
 ```
 
 Example queries you can ask:
@@ -46,7 +57,7 @@ Example queries you can ask:
 - "What are the top 5 movies from 1994?"
 - "Show me details for The Shawshank Redemption"
 
-## API Endpoints
+## MCP Tools
 
 The server provides these tools:
 
