@@ -12,6 +12,7 @@ else:
 
 # Connect to MongoDB
 try:
+    print(MONGO_URI)
     client = MongoClient(MONGO_URI)
     db = client["sample_mflix"]
     movies_collection = db["movies"]
