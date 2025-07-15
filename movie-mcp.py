@@ -1,4 +1,4 @@
-from pymongo import MongoClient, DESCENDING, ASCENDING
+from pymongo import MongoClient, DESCENDING
 from fastmcp import FastMCP
 import argparse
 
