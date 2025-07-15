@@ -2,6 +2,7 @@ from pymongo import MongoClient, DESCENDING
 from fastmcp import FastMCP
 from dotenv import load_dotenv
 import os
+import sys
 
 # Load environment variables
 load_dotenv()
@@ -12,7 +13,6 @@ if not MONGO_URI:
 
 # Connect to MongoDB
 try:
-    print(MONGO_URI)
     client = MongoClient(MONGO_URI)
     db = client["sample_mflix"]
     movies_collection = db["movies"]
