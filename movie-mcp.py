@@ -1,13 +1,14 @@
 from pymongo import MongoClient, DESCENDING
 from fastmcp import FastMCP
-import argparse
+from dotenv import load_dotenv
+import os
 
-# Set up argument parser
-parser = argparse.ArgumentParser(description='Movie Database Server')
-parser.add_argument('--db', required=True, help='MongoDB connection URI (e.g. mongodb://localhost:27017)')
-args = parser.parse_args()
-
-MONGO_URI = args.db
+# Load environment variables
+load_dotenv()
+MONGO_URI = os.getenv('MONGO_URI')
+if not MONGO_URI:
+    print("❌ MONGO_URI not found in .env file")
+    sys.exit(1)
 
 # Connect to MongoDB
 try:
