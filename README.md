@@ -25,8 +25,15 @@ cd movie-mcp-simple
 
 2. Install dependencies:
 ```bash
-pip install pymongo fastmcp
+pip install pymongo fastmcp python-dotenv
 ```
+
+3. Create a `.env` file with your MongoDB connection string:
+```bash
+cp sample.env .env
+```
+
+Edit the `.env` file to add your actual MongoDB URI.
 
 ## Usage
 
@@ -43,8 +50,7 @@ Configure the MCP server in Claude desktop with the following config:
         "fastmcp, pymongo",
         "fastmcp",
         "run",
-        "<path to>/movie-mcp-simple/movie-mcp.py",
-        "<MongoDB Atlas connection string>"
+        "<path to>/movie-mcp-simple/movie-mcp.py"
       ]
     }
   }
