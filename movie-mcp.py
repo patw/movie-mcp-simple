@@ -1,14 +1,13 @@
 from pymongo import MongoClient, DESCENDING, ASCENDING
 from fastmcp import FastMCP
-import sys
+import argparse
 
-# Get MongoDB URI from command line
-if len(sys.argv) > 1:
-    MONGO_URI = sys.argv[1]
-else:
-    print("Please provide the MongoDB URI as a command-line argument.")
-    print("Example: python movie_server.py mongodb://localhost:27017")
-    sys.exit(1)
+# Set up argument parser
+parser = argparse.ArgumentParser(description='Movie Database Server')
+parser.add_argument('--db', required=True, help='MongoDB connection URI (e.g. mongodb://localhost:27017)')
+args = parser.parse_args()
+
+MONGO_URI = args.db
 
 # Connect to MongoDB
 try:
